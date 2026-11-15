@@ -1,0 +1,63 @@
+.project-story {
+    max-width: 900px;
+    margin: 4rem auto 2rem;
+    padding: 2rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 1rem;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+.project-story h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #FFC107;
+}
+.project-story p {
+    font-size: 1.3rem;
+    color: #ddd;
+    line-height: 1.8;
+}
+.project-timeline {
+    max-width: 900px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+}
+.timeline-event {
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-left: 5px solid #FFC107;
+    border-radius: 0.8rem;
+    animation: fadeInUp 1s ease-out;
+}
+.timeline-event h2 {
+    color: #FFC107;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.timeline-event p {
+    font-size: 1.2rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+.team-cta {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+.team-cta p {
+    font-size: 1.4rem;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+.team-cta .btn {
+    background-color: #FFC107;
+    color: white;
+    border-radius: 8px;
+}
+.team-cta .btn:hover {
+    background-color: #FFC107;
+}

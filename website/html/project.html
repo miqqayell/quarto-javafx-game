@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project - Quarto</title>
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/project.css">
+  <link rel="stylesheet" href="../css/modal.css">
+</head>
+<body>
+<header>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="../html/index.html">Home</a></li>
+      <li><a href="../html/rules.html">Rules</a></li>
+      <li><a href="../html/team.html">Team</a></li>
+      <li><a href="../html/project.html" class="active">Project</a></li>
+      <li><a href="../html/install.html">Install</a></li>
+      <li id="authLi"><a href="#" id="authBtn">Sign In / Up</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="project-story">
+    <h1>The Journey Behind Quarto</h1>
+    <p>Our project is a modern, full-featured digital adaptation of Quarto, a renowned strategic board game, developed using JavaFX and integrated with a PostgreSQL database for persistent player statistics and game history.</p>
+  </section>
+
+  <section class="project-timeline">
+    <div class="timeline-event">
+      <h2>🧠 Technical Features</h2>
+      <p>This project is a digital version of the strategic board game Quarto, built with JavaFX and backed by a PostgreSQL database. Players take turns placing pieces defined by four binary attributes — size, shape, fill, and color — aiming to align four that share a common trait.</p>
+    </div>
+
+    <div class="timeline-event">
+      <h2>💻 Development Phase</h2>
+      <p>Teammate 2 built the core JavaFX structure and backend mechanics to ensure responsive, error-free gameplay.</p>
+    </div>
+
+    <div class="timeline-event">
+      <h2>🎨 Visual Design</h2>
+      <p>Teammate 1 crafted the visual identity, from user-friendly interfaces to the organic aesthetic you see today.</p>
+    </div>
+
+    <div class="timeline-event">
+      <h2>🔍 Team Collaboration</h2>
+      <p>This project combined frontend, backend, and database development into a cohesive application — blending gameplay, design, and data for a complete Quarto experience.</p>
+    </div>
+  </section>
+
+  <section class="team-cta">
+    <p>Want to know more about the people behind Quarto?</p>
+    <a href="team.html" class="btn">Meet the Team</a>
+  </section>
+</main>
+
+
+<footer>
+  <p>University project (KdG Applied Computer Science, 2025). Quarto is a game by Gigamic; this project is not affiliated with Gigamic.</p>
+</footer>
+
+<!-- Unified Auth Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close" data-close="authModal">&times;</span>
+    <div class="auth-tabs">
+      <button id="showLogin" class="tab-btn active">Login</button>
+      <button id="showRegister" class="tab-btn">Register</button>
+    </div>
+    <form id="loginForm" class="auth-form">
+      <input type="text" id="loginUsername" placeholder="Username" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Sign In</button>
+    </form>
+    <form id="registerForm" class="auth-form" style="display:none;">
+      <input type="text" id="regFullName" placeholder="Full Name" required>
+      <input type="text" id="regUsername" placeholder="Username" required>
+      <input type="password" id="regPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Register</button>
+    </form>
+  </div>
+</div>
+
+
+<script type="module" src="../js/script.js" defer></script>
+
+
+</body>
+</html>

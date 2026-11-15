@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quarto-Rules</title>
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/rules.css">
+  <link rel="stylesheet" href="../css/modal.css">
+</head>
+<body>
+<header>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rules.html" class="active">Rules</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="project.html">Project</a></li>
+      <li><a href="install.html">Install</a></li>
+      <li id="authLi"><a href="#" id="authBtn">Sign In / Up</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="rules-section">
+    <h1>Quarto Rules</h1>
+    <p>Quarto is a board game for two players invented by Swiss mathematician Blaise Müller. The game is simple but deep — players aim to align four pieces sharing at least one common attribute.</p>
+
+    <ul class="rules-list">
+      <li>Each piece has four attributes: height, color, shape, and solid/hollow.</li>
+      <li>Players take turns selecting a piece for their opponent to place.</li>
+      <li>The first player to align four pieces with at least one common trait wins!</li>
+      <li>If no moves are possible and no Quarto is declared, the game ends in a draw.</li>
+    </ul>
+  </section>
+
+  <section class="rules-section">
+    <h2>Understanding the Quarto Pieces</h2>
+    <p>Each piece has 4 distinct attributes: Height(tall, short), Shape(Round, Square), Fill(Solid, Hollow), and Color(Light, Dark).</p>
+    <div class="piece-attributes">
+      <img src="../images/pieces2.png" alt="Quarto piece attributes showing size, shape, fill, and color">
+    </div>
+  </section>
+
+  <section class="video-tutorial">
+    <h2>🎥 How to Play Quarto</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/miK1iabveQ4" title="How to Play Quarto | Board Game Rules & Instructions" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+
+</main>
+<footer>
+  <p>University project (KdG Applied Computer Science, 2025). Quarto is a game by Gigamic; this project is not affiliated with Gigamic.</p>
+</footer>
+
+
+<!-- Unified Auth Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close" data-close="authModal">&times;</span>
+    <div class="auth-tabs">
+      <button id="showLogin" class="tab-btn active">Login</button>
+      <button id="showRegister" class="tab-btn">Register</button>
+    </div>
+    <form id="loginForm" class="auth-form">
+      <input type="text" id="loginUsername" placeholder="Username" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Sign In</button>
+    </form>
+    <form id="registerForm" class="auth-form" style="display:none;">
+      <input type="text" id="regFullName" placeholder="Full Name" required>
+      <input type="text" id="regUsername" placeholder="Username" required>
+      <input type="password" id="regPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Register</button>
+    </form>
+  </div>
+</div>
+
+
+<script type="module" src="../js/script.js" defer></script>
+
+</body>
+</html>

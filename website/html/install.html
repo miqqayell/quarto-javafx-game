@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install - Quarto</title>
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/install.css">
+  <link rel="stylesheet" href="../css/modal.css">
+</head>
+<body>
+<header>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rules.html">Rules</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="project.html">Project</a></li>
+      <li><a href="install.html" class="active">Install</a></li>
+      <li id="authLi"><a href="#" id="authBtn">Sign In / Up</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="install-guide">
+    <h1>Install Quarto</h1>
+    <p>Follow these steps to install and start playing Quarto:</p>
+    <ol>
+      <li>Ensure you have Java 11 or later installed.</li>
+      <li>Download the latest release from our GitHub repository.</li>
+      <li>Unzip the folder and navigate to the project directory.</li>
+      <li>Run the application using the provided executable or compile from source with JavaFX support.</li>
+      <li>On GitHub, you will find information about future updates, features etc.</li>
+    </ol>
+
+    <div class="install-buttons">
+      <a href="path/to/quarto-latest.zip" download class="btn download-btn">⬇️ Download Quarto</a>
+      <a href="https://github.com/mikayelghalumyan/quarto-game-javafx.git" target="_blank" class="btn github-btn">🔗 View on GitHub</a>
+    </div>
+    <!--<a href="https://github.com/mikayelghalumyan/quarto-game-javafx.git" class="btn" target="_blank">View on GitHub</a>-->
+  </section>
+
+</main>
+
+<footer>
+  <p>University project (KdG Applied Computer Science, 2025). Quarto is a game by Gigamic; this project is not affiliated with Gigamic.</p>
+</footer>
+
+<!-- Unified Auth Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close" data-close="authModal">&times;</span>
+    <div class="auth-tabs">
+      <button id="showLogin" class="tab-btn active">Login</button>
+      <button id="showRegister" class="tab-btn">Register</button>
+    </div>
+    <form id="loginForm" class="auth-form">
+      <input type="text" id="loginUsername" placeholder="Username" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Sign In</button>
+    </form>
+    <form id="registerForm" class="auth-form" style="display:none;">
+      <input type="text" id="regFullName" placeholder="Full Name" required>
+      <input type="text" id="regUsername" placeholder="Username" required>
+      <input type="password" id="regPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Register</button>
+    </form>
+  </div>
+</div>
+
+
+<script type="module" src="../js/script.js" defer></script>
+
+
+</body>
+</html>

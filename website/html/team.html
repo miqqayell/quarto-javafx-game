@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Team - Quarto</title>
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/team.css">
+  <link rel="stylesheet" href="../css/modal.css">
+</head>
+<body>
+<header>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html" >Home</a></li>
+      <li><a href="rules.html">Rules</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="project.html">Project</a></li>
+      <li><a href="install.html">Install</a></li>
+      <li id="authLi"><a href="#" id="authBtn">Sign In / Up</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<main>
+  <section class="team-intro">
+    <h1>Meet the Team</h1>
+    <p>Four passionate creators — one vision: bringing Quarto to digital life.</p>
+  </section>
+
+  <section class="team-grid">
+    <div class="team-member">
+      <img src="../images/avatar-placeholder.svg" alt="">
+      <h3>Mikayel Ghalumyan</h3>
+      <p>Full-Stack Web Developer</p>
+      <p class="member-bio">Led the project, built the website, and handled database design and integration.</p>
+    </div>
+    <div class="team-member">
+      <img src="../images/avatar-placeholder.svg" alt="">
+      <h3>Teammate 1</h3>
+      <p> JavaFX Developer & Database Manager</p>
+      <p class="member-bio">Focused on JavaFX interface and implemented database operations in the game.</p>
+    </div>
+    <div class="team-member">
+      <img src="../images/avatar-placeholder.svg" alt="">
+      <h3>Teammate 2</h3>
+      <p>JavaFX Game Developer</p>
+      <p class="member-bio">Worked on core gameplay mechanics and JavaFX UI elements.</p>
+    </div>
+    <div class="team-member">
+      <img src="../images/avatar-placeholder.svg" alt="">
+      <h3>Teammate 3</h3>
+      <p>Server & Deployment Engineer</p>
+      <p class="member-bio">Managed backend setup, API integration, and deployment to the server.</p>
+    </div>
+  </section>
+
+  <section class="issue-board">
+    <h2>Project History</h2>
+    <div class="issue-columns">
+      <!-- Sprint 1 -->
+      <div class="issue-column">
+        <h3 class="open">Sprint 1</h3>
+        <div class="task">Planned and designed core systems in the first sprint.
+          Created diagrams, database schemas, and game flow concepts.
+          Defined game logic and user experience to lay a solid development foundation.</div>
+      </div>
+
+      <!-- Sprint 2 -->
+      <div class="issue-column">
+        <h3 class="doing">Sprint 2</h3>
+        <div class="task">During this sprint, the team began developing the beta version of the game and fixed issues identified in the first sprint. We improved the game logic and user interface, set up a web server to host the game, and added game statistics tracking to analyze player behavior and enhance the overall experience.</div>
+      </div>
+
+      <!-- Sprint 3 -->
+      <div class="issue-column">
+        <h3 class="review">Sprint 3</h3>
+        <div class="task">In Sprint 3, the team focused on finalizing core features and preparing for the upcoming presentation. We polished the UI, ensured the player-vs-computer mode worked smoothly, and launched a project website showcasing the game, its features, and development process. Both the game and website were deployed for public access.</div>
+      </div>
+
+      <!-- Sprint 4 -->
+      <div class="issue-column">
+        <h3 class="closed">Sprint 4</h3>
+        <div class="task">In Sprint 4, the team focused on final steps—polishing the game, finalizing details, and uploading the website to the server for public access.</div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<footer>
+  <p>University project (KdG Applied Computer Science, 2025). Quarto is a game by Gigamic; this project is not affiliated with Gigamic.</p>
+</footer>
+
+<!-- Unified Sign In / Up Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close" data-close="authModal">&times;</span>
+    <div class="auth-tabs">
+      <button id="showLogin" class="tab-btn active">Login</button>
+      <button id="showRegister" class="tab-btn">Register</button>
+    </div>
+    <form id="loginForm" class="auth-form">
+      <input type="text" id="loginUsername" placeholder="Username" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Sign In</button>
+    </form>
+    <form id="registerForm" class="auth-form" style="display:none;">
+      <input type="text" id="regFullName" placeholder="Full Name" required>
+      <input type="text" id="regUsername" placeholder="Username" required>
+      <input type="password" id="regPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Register</button>
+    </form>
+  </div>
+</div>
+
+
+<script type="module" src="../js/script.js" defer></script>
+</body>
+</html>

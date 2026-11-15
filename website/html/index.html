@@ -1,0 +1,83 @@
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quarto - JavaFX ASCII Game</title>
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/modal.css">
+
+</head>
+<body>
+<header>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="rules.html">Rules</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="project.html">Project</a></li>
+      <li><a href="install.html">Install</a></li>
+      <li id="authLi"><a href="#" id="authBtn">Sign In / Up</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+
+  <section class="hero">
+    <div class="hero-image">
+      <img src="../images/Quarto.png" alt="Quarto Board">
+    </div>
+    <div class="hero-text">
+      <!--<h1>QUARTO</h1>-->
+      <p>Our game is a modern JavaFX implementation of Quarto, a strategic board game where players aim to align four pieces sharing a common attribute — shape, color, size, or fill.
+        Unlike traditional games, in Quarto your opponent chooses your piece, adding a unique twist of strategy and prediction.
+        With a sleek JavaFX interface, dynamic animations, and PostgreSQL-backed statistics tracking, our version brings this classic logic challenge to life in an engaging digital format.
+      </p>
+      <a href="install.html" class="btn">Start Playing</a>
+    </div>
+  </section>
+
+  <section class="gameplay-demo">
+    <h2>Our game in action!</h2>
+    <img src="../images/gameplay.gif" alt="Gameplay demo of Quarto in action">
+  </section>
+
+</main>
+<footer>
+  <p>University project (KdG Applied Computer Science, 2025). Quarto is a game by Gigamic; this project is not affiliated with Gigamic.</p>
+</footer>
+
+<!-- Unified Auth Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close" data-close="authModal">&times;</span>
+    <div class="auth-tabs">
+      <button id="showLogin" class="tab-btn active">Login</button>
+      <button id="showRegister" class="tab-btn">Register</button>
+    </div>
+    <form id="loginForm" class="auth-form">
+      <input type="text" id="loginUsername" placeholder="Username" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Sign In</button>
+    </form>
+    <form id="registerForm" class="auth-form" style="display:none;">
+      <input type="text" id="regFullName" placeholder="Full Name" required>
+      <input type="text" id="regUsername" placeholder="Username" required>
+      <input type="password" id="regPassword" placeholder="Password" required>
+      <button type="submit" class="btn auth-submit">Register</button>
+    </form>
+  </div>
+</div>
+
+
+<script type="module" src="../js/script.js" defer></script>
+
+
+</body>
+</html>

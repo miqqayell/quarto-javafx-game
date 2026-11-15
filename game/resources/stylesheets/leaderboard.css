@@ -1,0 +1,70 @@
+.table-view {
+    -fx-background-color: #d7b899;
+    -fx-border-color: #8b5e3c;
+    -fx-border-radius: 15;
+    -fx-padding: 5;
+    -fx-text-fill: #3e2723;
+    -fx-background-radius: 15;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 12px;
+    -fx-text-alignment: center;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #a6763e;
+    -fx-border-radius: 15 15 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: #e0b589;
+    -fx-text-fill: #3e2723;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-border-radius: 15 15 0 0;
+}
+
+.table-row-cell {
+    -fx-background-color: #d7b899;
+    -fx-text-fill: #3e2723;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #c49a6c;
+}
+
+.table-cell {
+    -fx-border-color: transparent;
+    -fx-padding: 5;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 14px;
+    -fx-text-fill: #3e2723;
+    -fx-alignment: CENTER;
+}
+
+.table-view .placeholder {
+    -fx-background-color: #d7b899;
+}
+
+.button {
+    -fx-background-color: #D2B48C;
+    -fx-background-radius: 10px;
+    -fx-border-color: #8B4513;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 15px;
+    -fx-text-fill: #4B3B30;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 3);
+}
+
+.button:hover {
+    -fx-background-color: #C19A6B;
+    -fx-cursor: hand;
+}
+
+.button:pressed {
+    -fx-background-color: #A67B5B;
+    -fx-translate-y: 2px;
+}

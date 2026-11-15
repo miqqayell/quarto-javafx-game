@@ -1,0 +1,129 @@
+.team-intro {
+    text-align: center;
+    margin: 3rem 0;
+    animation: fadeInUp 1s ease-out;
+}
+.team-intro h1 {
+    font-size: 3rem;
+    color: #FFC107;
+    margin-bottom: 1rem;
+}
+.team-intro p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+.team-member {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid #FFC107;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+}
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 2px solid #FFC107;
+}
+.team-member h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+.team-member p {
+    font-size: 1rem;
+    color: #aaa;
+}
+.member-bio {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    color: #ddd;
+}
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(255,193,7,0.2);
+}
+@media (max-width: 900px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+    .team-grid { grid-template-columns: 1fr; }
+}
+
+/* Issue Board Section */
+.issue-board {
+    padding: 2rem 0;
+}
+
+.issue-board h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: #FFC107;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* reuse the same grid settings as .team-grid */
+.issue-board .issue-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* reuse the same card styles as .team-member */
+.issue-board .issue-column {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #FFC107;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.issue-board .issue-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.issue-board .task {
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 0.75rem;
+}
+
+.issue-board .issue-column:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(255, 193, 7, 0.2);
+}
+
+/* same responsive breakpoints */
+@media (max-width: 900px) {
+    .issue-board .issue-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .issue-board .issue-columns {
+        grid-template-columns: 1fr;
+    }
+}

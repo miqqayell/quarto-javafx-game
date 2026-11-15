@@ -1,0 +1,46 @@
+.chart {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+}
+
+.chart-plot-background {
+    -fx-background-radius: 20px;
+    -fx-background-color: #C19A6B;
+    -fx-border-radius: 20px;
+    -fx-border-color: #4B3B30;
+    -fx-border-width: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 3);
+}
+
+.axis {
+    -fx-tick-label-fill: #3e2723;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 16px;
+}
+
+.axis .tick-label {
+    -fx-text-fill: #3e2723;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.axis-label {
+    -fx-text-fill: #4B3B30;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.chart-horizontal-grid-lines, .chart-vertical-grid-lines {
+    -fx-stroke: #4B3B30;
+    -fx-stroke-width: 1.5px;
+    -fx-stroke-dash-array: 2 5;
+}
+
+.default-color0.chart-bar,
+.default-color1.chart-bar {
+    -fx-bar-fill: #A67B5B;
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+}

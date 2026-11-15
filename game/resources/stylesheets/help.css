@@ -1,0 +1,33 @@
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: #c49a6c;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #8b5e3c;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: #a6763e;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: #c49a6c;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #8b5e3c;
+    -fx-background-radius: 10;
+}

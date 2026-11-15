@@ -4,8 +4,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.net.URL;
 
 /**
  * Singleton manager for handling sound effects and background music.
@@ -42,18 +41,12 @@ public class SoundManager {
     /** Flag indicating if background music is currently playing. */
     private boolean isBackgroundPlaying = false;
 
-    /** File separator character for resource paths. */
-    private final char FILE_SEPARATOR = System.getProperty("file.separator").charAt(0);
-    /** Path to the background music file. */
-    private final Path backgroundMusicPath = Paths.get("resources" + FILE_SEPARATOR + "sounds" + FILE_SEPARATOR + "bgMusic.mp3");
-    /** Path to the button click sound file. */
-    private final Path buttonClickSoundPath = Paths.get("resources" + FILE_SEPARATOR + "sounds" + FILE_SEPARATOR + "buttonClick.mp3");
-    /** Path to the piece placed sound file. */
-    private final Path piecePlacedPath = Paths.get("resources" + FILE_SEPARATOR + "sounds" + FILE_SEPARATOR + "piecePlace.mp3");
-    /** Path to the lose game sound file. */
-    private final Path loseGamePath = Paths.get("resources" + FILE_SEPARATOR + "sounds" + FILE_SEPARATOR + "loseGame.mp3");
-    /** Path to the win game sound file. */
-    private final Path winGamePath = Paths.get("resources" + FILE_SEPARATOR + "sounds" + FILE_SEPARATOR + "winGame.mp3");
+    /** Classpath locations of the sound files. The background track is optional (not shipped). */
+    private static final String BACKGROUND_MUSIC = "/sounds/bgMusic.mp3";
+    private static final String BUTTON_CLICK = "/sounds/buttonClick.mp3";
+    private static final String PIECE_PLACED = "/sounds/piecePlace.mp3";
+    private static final String LOSE_GAME = "/sounds/loseGame.mp3";
+    private static final String WIN_GAME = "/sounds/winGame.mp3";
 
     /**
      * Private constructor to enforce singleton pattern.
@@ -80,25 +73,37 @@ public class SoundManager {
      * Exceptions during loading are caught silently.
      */
     private void initializeSounds() {
-        try {
-            Media backgroundSound = new Media(backgroundMusicPath.toUri().toString());
-            backgroundPlayer = new MediaPlayer(backgroundSound);
+        backgroundPlayer = load(BACKGROUND_MUSIC);
+        if (backgroundPlayer != null) {
             backgroundPlayer.setVolume(0.5);
             backgroundPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        }
+        buttonClickPlayer = load(BUTTON_CLICK);
+        winGamePlayer = load(WIN_GAME);
+        loseGamePlayer = load(LOSE_GAME);
+        piecePlacedPlayer = load(PIECE_PLACED);
+    }
 
-            Media buttonClickSound = new Media(buttonClickSoundPath.toUri().toString());
-            buttonClickPlayer = new MediaPlayer(buttonClickSound);
-
-            Media winGameSound = new Media(winGamePath.toUri().toString());
-            winGamePlayer = new MediaPlayer(winGameSound);
-
-            Media loseGameSound = new Media(loseGamePath.toUri().toString());
-            loseGamePlayer = new MediaPlayer(loseGameSound);
-
-            Media piecePlacedSound = new Media(piecePlacedPath.toUri().toString());
-            piecePlacedPlayer = new MediaPlayer(piecePlacedSound);
+    /**
+     * Loads one sound from the classpath. Returns {@code null} when the file is missing
+     * or cannot be played, so one missing sound does not disable the others.
+     */
+    private MediaPlayer load(String resource) {
+        URL url = SoundManager.class.getResource(resource);
+        if (url == null) {
+            return null;
+        }
+        try {
+            return new MediaPlayer(new Media(url.toExternalForm()));
         } catch (Exception e) {
-            // Loading errors are ignored
+            return null;
+        }
+    }
+
+    private static void restart(MediaPlayer player) {
+        if (player != null) {
+            player.seek(Duration.ZERO);
+            player.play();
         }
     }
 
@@ -134,7 +139,7 @@ public class SoundManager {
      * Plays the background music if it is not already playing.
      */
     public void playBackgroundMusic() {
-        if (!isBackgroundPlaying) {
+        if (!isBackgroundPlaying && backgroundPlayer != null) {
             stopAllMusic();
             backgroundPlayer.play();
             isBackgroundPlaying = true;
@@ -145,31 +150,30 @@ public class SoundManager {
      * Plays the button click sound effect from the beginning.
      */
     public void playButtonClick() {
-        buttonClickPlayer.seek(Duration.ZERO);
-        buttonClickPlayer.play();
+        restart(buttonClickPlayer);
     }
 
     /**
      * Plays the lose game sound effect from the beginning.
      */
     public void playLoseGame() {
-        loseGamePlayer.seek(Duration.ZERO);
-        loseGamePlayer.play();
+        restart(loseGamePlayer);
     }
 
     /**
      * Plays the win game sound effect from the beginning.
      */
     public void playWinGame() {
-        winGamePlayer.seek(Duration.ZERO);
-        winGamePlayer.play();
+        restart(winGamePlayer);
     }
 
     /**
      * Stops the currently playing background music and resets its position.
      */
     public void stopBackgroundMusic() {
-        backgroundPlayer.seek(Duration.ZERO);
+        if (backgroundPlayer != null) {
+            backgroundPlayer.seek(Duration.ZERO);
+        }
         isBackgroundPlaying = false;
     }
 
@@ -177,8 +181,7 @@ public class SoundManager {
      * Plays the piece placed sound effect from the beginning.
      */
     public void playPiecePlace() {
-        piecePlacedPlayer.seek(Duration.ZERO);
-        piecePlacedPlayer.play();
+        restart(piecePlacedPlayer);
     }
 
     /**
@@ -314,6 +317,8 @@ public class SoundManager {
      * Stops all music playback immediately.
      */
     public void stopAllMusic() {
-        backgroundPlayer.stop();
+        if (backgroundPlayer != null) {
+            backgroundPlayer.stop();
+        }
     }
 }

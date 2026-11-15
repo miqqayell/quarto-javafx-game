@@ -29,18 +29,14 @@
     <h1>Install Quarto</h1>
     <p>Follow these steps to install and start playing Quarto:</p>
     <ol>
-      <li>Ensure you have Java 11 or later installed.</li>
-      <li>Download the latest release from our GitHub repository.</li>
-      <li>Unzip the folder and navigate to the project directory.</li>
-      <li>Run the application using the provided executable or compile from source with JavaFX support.</li>
-      <li>On GitHub, you will find information about future updates, features etc.</li>
+      <li>Install Java 21 (JDK) and Maven.</li>
+      <li>Clone the repository from GitHub.</li>
+      <li>Optional: start the database with <code>docker compose up -d</code> in the <code>game</code> folder (needed for accounts and the leaderboard).</li>
+      <li>Run <code>mvn javafx:run</code> in the <code>game</code> folder, or choose "Play as Guest" to play without a database.</li>
     </ol>
-
     <div class="install-buttons">
-      <a href="path/to/quarto-latest.zip" download class="btn download-btn">⬇️ Download Quarto</a>
-      <a href="https://github.com/mikayelghalumyan/quarto-game-javafx.git" target="_blank" class="btn github-btn">🔗 View on GitHub</a>
+      <a href="https://github.com/miqqayell/quarto-javafx-game" target="_blank" rel="noopener" class="btn github-btn">View on GitHub</a>
     </div>
-    <!--<a href="https://github.com/mikayelghalumyan/quarto-game-javafx.git" class="btn" target="_blank">View on GitHub</a>-->
   </section>
 
 </main>

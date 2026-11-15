@@ -1,0 +1,16 @@
+# Local PostgreSQL for the Quarto game. Start with: docker compose up -d
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${QUARTO_DB_NAME:-quarto}
+      POSTGRES_USER: ${QUARTO_DB_USER:-quarto}
+      POSTGRES_PASSWORD: ${QUARTO_DB_PASSWORD:-quarto}
+    ports:
+      - "${QUARTO_DB_PORT:-5432}:5432"
+    volumes:
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - quarto-data:/var/lib/postgresql/data
+
+volumes:
+  quarto-data:

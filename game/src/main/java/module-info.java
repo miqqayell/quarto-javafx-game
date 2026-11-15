@@ -5,4 +5,5 @@ open module Appname {
     requires javafx.base;
     requires java.desktop;
     requires java.sql;
+    requires org.postgresql.jdbc;
 }

@@ -30,14 +30,14 @@ The game follows **Model-View-Presenter**. Each screen has a View (JavaFX layout
 
 ```mermaid
 flowchart LR
-    V[Views<br/>JavaFX screens] <--> P[Presenters]
-    P --> M[MVPModel]
-    M --> B[Board / GameSession]
-    M --> AI[ComputerPlayer]
-    AI --> IE[InferenceEngine]
-    IE --> F[FactsHandler]
-    IE --> R[RulesHandler<br/>5 ordered rules]
-    M --> DB[(PostgreSQL<br/>players, game_info, move_info)]
+    V["Views<br/>JavaFX screens"] <--> P["Presenters"]
+    P --> M["MVPModel"]
+    M --> B["Board / GameSession"]
+    M --> AI["ComputerPlayer"]
+    AI --> IE["InferenceEngine"]
+    IE --> F["FactsHandler"]
+    IE --> R["RulesHandler<br/>5 ordered rules"]
+    M --> DB[("PostgreSQL<br/>players, game_info, move_info")]
 ```
 
 ## Getting started

@@ -5,7 +5,7 @@
 CREATE TABLE IF NOT EXISTS players (
     player_id      SERIAL PRIMARY KEY,
     player_name    VARCHAR(50) NOT NULL UNIQUE,
-    password       VARCHAR(255) NOT NULL,   -- stored as plain text by the original code (see README)
+    password       VARCHAR(255) NOT NULL,   -- salted PBKDF2 hash (see PasswordHasher.java)
     player_country VARCHAR(100)
 );
 

@@ -6,8 +6,8 @@ package be.kdg.integration2.mvpglobal.model;
  * Stores user credentials, country of origin, and a unique player identifier.
  * </p>
  * <p>
- * Note: Passwords are currently stored in plaintext. Consider hashing for
- * production use to improve security.
+ * Note: the raw password is only kept in memory for the session; the database
+ * stores only a salted hash.
  * </p>
  *
  * @author ACS101 - TEAM 2
@@ -20,7 +20,7 @@ public class HumanPlayer extends Player {
     private String username;
 
     /**
-     * The player's password (stored in plaintext).
+     * The player's password for this session (the database stores only a hash).
      */
     private String password;
 

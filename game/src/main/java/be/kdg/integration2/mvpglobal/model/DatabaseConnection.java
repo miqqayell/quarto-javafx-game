@@ -16,8 +16,8 @@ import java.util.concurrent.TimeUnit;
  * player records, verify credentials, and record game sessions.
  * </p>
  * <p>
- * <strong>Note:</strong> Passwords are currently stored in plaintext. Consider
- * secure hashing for production.
+ * Passwords are stored as salted PBKDF2 hashes (see {@link PasswordHasher})
+ * and all queries use bound parameters.
  * </p>
  *
  * @author ACS101 - TEAM 2
@@ -90,7 +90,7 @@ public class DatabaseConnection {
      * Inserts a new player record into the database.
      *
      * @param playerName the unique username of the player
-     * @param password   the player's password (stored as plaintext)
+     * @param password   the player's raw password (stored as a salted PBKDF2 hash)
      * @param country    the player's country of origin
      * @return the generated player ID, or -1 if insertion failed
      */
@@ -98,7 +98,7 @@ public class DatabaseConnection {
         String sql = "INSERT INTO players (player_name, password, player_country) VALUES (?, ?, ?) RETURNING player_id";
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             ps.setString(1, playerName);
-            ps.setString(2, password);
+            ps.setString(2, PasswordHasher.hash(password));
             ps.setString(3, country);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -144,7 +144,7 @@ public class DatabaseConnection {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     String stored = rs.getString("password");
-                    return stored.equals(password);
+                    return PasswordHasher.verify(password, stored);
                 }
                 return false;
             }

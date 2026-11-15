@@ -16,10 +16,8 @@ import java.util.concurrent.TimeUnit;
  * player records, verify credentials, and record game sessions.
  * </p>
  * <p>
- * <strong>Note:</strong> Passwords are currently stored in plaintext and
- * SQL statements are constructed via string concatenation, which may be
- * vulnerable to SQL injection. Consider using secure hashing and parameterized
- * queries for production.
+ * <strong>Note:</strong> Passwords are currently stored in plaintext. Consider
+ * secure hashing for production.
  * </p>
  *
  * @author ACS101 - TEAM 2
@@ -120,10 +118,12 @@ public class DatabaseConnection {
      * @return {@code true} if the username exists; {@code false} otherwise
      */
     public boolean checkUsername(String username) {
-        String query = "SELECT player_name FROM players WHERE player_name = '" + username + "'";
-        try (Statement stmt = getConnection().createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-            return rs.next();
+        String query = "SELECT player_name FROM players WHERE player_name = ?";
+        try (PreparedStatement ps = getConnection().prepareStatement(query)) {
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
         } catch (SQLException e) {
             System.out.println("Error checking username: " + e.getMessage());
             return false;
@@ -138,14 +138,16 @@ public class DatabaseConnection {
      * @return {@code true} if the password matches; {@code false} otherwise
      */
     public boolean checkPassword(String username, String password) {
-        String query = "SELECT password FROM players WHERE player_name = '" + username + "'";
-        try (Statement stmt = getConnection().createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.next()) {
-                String stored = rs.getString("password");
-                return stored.equals(password);
+        String query = "SELECT password FROM players WHERE player_name = ?";
+        try (PreparedStatement ps = getConnection().prepareStatement(query)) {
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String stored = rs.getString("password");
+                    return stored.equals(password);
+                }
+                return false;
             }
-            return false;
         } catch (SQLException e) {
             System.out.println("Error checking password: " + e.getMessage());
             return false;
@@ -159,11 +161,13 @@ public class DatabaseConnection {
      * @return the player ID, or -1 if not found or on error
      */
     public int getPlayerIdByUsername(String username) {
-        String query = "SELECT player_id FROM players WHERE player_name = '" + username + "'";
-        try (Statement stmt = getConnection().createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.next()) {
-                return rs.getInt("player_id");
+        String query = "SELECT player_id FROM players WHERE player_name = ?";
+        try (PreparedStatement ps = getConnection().prepareStatement(query)) {
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("player_id");
+                }
             }
         } catch (SQLException e) {
             System.out.println("Error fetching player ID: " + e.getMessage());
@@ -178,11 +182,13 @@ public class DatabaseConnection {
      * @return the player's country code, or {@code null} if not found or on error
      */
     public String getPlayerCountryByID(int id) {
-        String query = "SELECT player_country FROM players WHERE player_id = '" + id + "'";
-        try (Statement stmt = getConnection().createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.next()) {
-                return rs.getString("player_country");
+        String query = "SELECT player_country FROM players WHERE player_id = ?";
+        try (PreparedStatement ps = getConnection().prepareStatement(query)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("player_country");
+                }
             }
         } catch (SQLException e) {
             System.out.println("Error fetching player country: " + e.getMessage());
@@ -197,11 +203,13 @@ public class DatabaseConnection {
      * @return the player's username, or {@code null} if not found or on error
      */
     public String getNameById(int id) {
-        String query = "SELECT player_name FROM players WHERE player_id = '" + id + "'";
-        try (Statement stmt = getConnection().createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.next()) {
-                return rs.getString("player_name");
+        String query = "SELECT player_name FROM players WHERE player_id = ?";
+        try (PreparedStatement ps = getConnection().prepareStatement(query)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("player_name");
+                }
             }
         } catch (SQLException e) {
             System.out.println("Failed to get the player's name: " + e.getMessage());

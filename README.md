@@ -12,7 +12,8 @@ A desktop version of the board game Quarto: you play against a rule-based comput
 - Sign up / sign in, or **play as guest** without a database.
 - Leaderboard (games, wins, win %, average moves, average move duration) computed in SQL.
 - Results screen with a bar chart of move durations.
-- Sound effects with per-category volume settings, and a help screen with the rules.
+- Help screen with the rules, and a settings screen with per-category volume controls (the sound files are not included in this repo, so the game runs silently).
+- Passwords stored as salted PBKDF2 hashes; all player queries use `PreparedStatement` parameters.
 
 **Website (`website/`)**
 - Static site with rules, team, project and install pages.
@@ -78,6 +79,15 @@ cd website && python3 -m http.server 8000
 
 Team lead in a team of four. I led the project, built the website, and designed and integrated the database.
 
+## What I learned
+
+- **Java and OOP:** structuring a larger application with the MVP pattern, enums and small, focused classes.
+- **JavaFX:** building multi-screen desktop UIs with layouts, CSS styling, animations and charts.
+- **SQL and PostgreSQL:** designing a relational schema, writing joins and aggregate queries for the leaderboard, and connecting through JDBC.
+- **AI basics:** modelling decisions as facts and ordered rules in a simple inference engine.
+- **Web:** building a static site with HTML, CSS and JavaScript modules.
+- **Teamwork:** planning sprints, dividing work and coordinating a team of four as team lead.
+
 ## Team
 
 | Member | Contribution |
@@ -93,11 +103,10 @@ University project, KdG Applied Computer Science, ACS101 (Integration project, y
 
 Quarto is a board game designed by Blaise Müller and published by Gigamic. This project is not affiliated with or endorsed by Gigamic.
 
-The original database ran on the university network. When preparing this repository I added the Maven build, the reconstructed `schema.sql` with Docker Compose, the unit tests, and configuration through environment variables. The commit history shows each change.
+The original database ran on the university network. When preparing this repository I added the Maven build, the reconstructed `schema.sql` with Docker Compose, unit tests, configuration through environment variables, parameterized queries and password hashing. The commit history shows each change.
 
 ## Possible improvements
 
-- Hash passwords (e.g. BCrypt). They are currently stored in plain text.
-- Use `PreparedStatement` parameters everywhere. Some lookups still build SQL by string concatenation.
+- Add original or properly licensed sound effects and background music.
 - Implement the placeholder AI rules (blocking the player's winning move, "good move" heuristics).
 - Move database calls off the JavaFX thread consistently, and remove leftover debug output.
